@@ -1,0 +1,5 @@
+sudo apt update
+sudo apt-get install mysql-server mysql-client
+
+mysql -u root -p
+quit
