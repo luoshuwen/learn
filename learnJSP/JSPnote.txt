@@ -1,0 +1,127 @@
+◄►▼▲●
+第五章 JSP
+$5.1 了解JSP页面
+$5.2 指令标识
+5.2.1 page指令
+▲session属性
+·是否使用HTTP的session会话对象，默认是true
+▲buffer属性
+·设置JSP的out输出对象使用的缓冲区大小，默认8KB，单位只能是KB一般是8的倍数
+▲isErrorPage属性
+·该属性可以将当前页面设置成错误处理页面来处理另一个JSP页面的错误，也就是异常处理
+·如果是的话，设置为true，一般是false
+▲errorPage属性
+·指定当前页面的异常处理页面，被指定的页面isErrorPage属性必须为true
+·其属性值是一个url字符串
+·eg：
+    <%@page errorPage="error/loginErrorPage.jsp"%>
+
+5.2.2 include指令
+▲通过该指令可以在一个JSP页面中包含另一个JSP页面
+▲静态包含，被包含的JSP文件中的代码不会被编译执行
+▲在包含和被包含的文件中，不能有相同名称的变量
+·eg：
+    <%@include file="path"%>
+·路径可以是相对路径或绝对路径，但是不可以是通过<%=%>表达式所代表的文件
+
+5.2.3 taglib指令
+▲在JSP文件中，可以通过taglib指令标识声明该页面中所使用的标签库，同时引用标签库，并指定标签的前缀
+▲参数：
+·prefix：用于指定标签的前缀。前缀不能使jsp关键字
+·uri：用于指定标签库文件存放的位置
+·eg：在页面中引用JSTL的核心标签库
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+$5.3 脚本标识
+▲JSP中脚本标识包括3部分：JSP表达式（Expression）、声明标识（Declaration）、脚本标识（Scriptlet）
+·通过这些标识，在JSP页面中可以像编写java程序一样来声明变量，定义函数或进行各种表达式的运算。
+5.3.1 JSP表达式
+▲JSP表达式用于向页面中输出信息   <%= 表达式%>
+·表达式：可以是任何java语言的完整表达式，该表达式的最终运算结果将被转换为字符串
+▲JSP表达式可以插入到HTML标记中，用于动态设置属性值
+
+5.3.2 声明标识
+▲用于在JSP页面中定义全局的变量或方法
+·服务器执行JSP页面时，会将JSP页面转换为Servlet类，在该类中会把使用JSP声明标识定义的变量和方法转换为类的成员变量和方法
+▲格式：   <%! 
+             声明变量或方法的代码 
+	         %>
+			 
+5.3.3 代码片段
+▲代码片段将在页面请求的处理期间被执行。
+▲生命周期是页面关闭后就会被销毁
+
+$5.4 JSP注释
+5.4.1 HTML注释
+▲直接//
+▲不会显示，但是看源码可以看到
+5.4.2 代码片段中的注释同java注释
+5.4.3 隐藏注释：<%-- 注释内容 --%>
+5.4.4 动态注释
+▲eg：将当前日期和时间作为HTML注释文本
+    <!-- <%=new Date()%> -->
+	
+$5.5 动作标识
+5.5.1 包含文件标识<jsp:include>
+▲JSP的动作标识<jsp:include>用于向当前页面中包含其他的文件。被包含的文件可以是动态或者静态的。
+▲语法：    
+    <jsp:include page="url" flush="false|true" />
+	或是
+	<jsp:include page="url" flush="false|true">
+	子动作标识<jsp:param>
+	</jsp:include>
+▲参数说明：
+·page：用于指定被包含文件的 相对路径
+·flush：默认false，设置是否刷新缓冲区，如果是true，先刷新缓冲区再执行包含工作
+·子动作标识<jsp:param>:用于向被包含的动态页面中传递参数
+●在应用页面包含功能时，为了使整个页面的层次结构不发生冲突，建议在被包含页面中将<html>,<body>等标记删除
+
+5.5.2 请求转发标识<jsp:forward>
+▲通过<jsp:forward>动作标识，可以将请求转发到其他的web资源，例如，另一个JSP页面、HTML页面、Servlet等。执行请求转发后，当前页面将不再被执行，而是去执行该标识指定的目标页面。
+▲语法：
+    <jsp:forward page="url"/>
+	或者是
+	<jsp:forward page="url">
+	子动作标识<jsp:param>
+	</jsp:forward>
+▲参数说明：
+·子动作标识<jsp:param>:用于向转向的目标文件中传递参数
+
+5.5.3 传递参数标识<jsp:param>
+▲JSP的动作标识<jsp:param>可以作为其他标识的子标识，用于为其他标识传递参数。
+▲语法：
+    <jsp:param name="参数名" value="参数值"/>
+▲eg：
+    <jsp:forward page="modify.jsp">
+	    <jsp:param name="userId" value="7"/>
+	</jsp:forward>
+▲它的功能与 在文件名后面直接加 "？参数名=参数值" 是相同的
+
+第六章 JSP内置对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
