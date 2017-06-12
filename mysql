@@ -1,8 +1,0 @@
-sudo apt update
-sudo apt-get install mysql-server mysql-client
-sudo apt-get install libmysqlclient-dev
-
-sudo netstat -tap | grep mysql
-
-mysql -u root -p
-quit
