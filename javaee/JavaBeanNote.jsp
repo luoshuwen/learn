@@ -228,4 +228,97 @@ $8.3 Servlet开发
   
 第9章 过滤器和监听器
 $9.1 Servlet过滤器
-▲Servlet过滤器
+▲Servlet过滤器主要用于对客户端（浏览器）的请求进行过滤，现在将过滤后的请求转交给下一资源。
+
+9.1.1 什么是过滤器
+▲Servlet过滤器可以改变请求中的内容，来满足实际开发中的需要
+▲可以部署多层过滤器
+
+9.1.2 过滤器核心对象
+
+9.1.3 过滤器创建与配置
+▲代码：
+    import java.io.IOException;
+    import javax.servlet.*;
+    
+    public class MyFilter implements Filter
+    {
+    	public void init(FilterCinfig fConfig) throws ServletException
+    	{
+    		//初始化处理
+    	}
+    	//过滤处理方法
+    	public void doFilter(ServletRequest request,ServletResponse response,FilterChain chain) throws IOException,ServletException
+    	{
+    		//过滤处理
+    		chain.doFilter(request,response);
+    	}
+    	//销毁方法
+    	public void destroy()
+    	{
+    		
+    	}
+    }
+▲对过滤器的配置主要分为两个步骤：声明过滤器对象、创建过滤器映射
+▲创建代码：
+    <!--过滤器声明 -->
+    <filter>
+    	<filter-name>MyFilter</filter-name>
+    	<filter-class>com.lsw.MyFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>MyFilter</filter-name>
+    	<url-pattern>/MyFilter</url-pattern>
+    </filter-mapping>
+▲eg:
+    <filter>
+    	<filter-name>CountFilter</filter-name>
+    	<filter-class>com.lsw.filter.MyFilter</filter-class>
+    	<init-param>
+    		<param-name>count</param-name>
+    		<param-value>5000</param-value>
+    	</init-param>
+    </filter>
+    <filter-mapping>
+    	<filter-name>CountFilter</filter-name>
+    	<url-pattern>/LServ/MyFilter</url-pattern>
+    </filter-mapping>
+    jsp文件：
+    <body>
+    	<h2>
+    		welcom!
+    		you are the <%=application.getAttribute("count")%> visiter
+    	</h2>
+    </body>
+
+9.1.4 字符编码过滤器
+▲eg：实现图书信息的添加功能，并创建字符编码过滤器，避免中文乱码现象的产生。
+
+$9.2 Servlet监听器
+▲在Servlet技术中已经定义了一些事件，并且可以针对这些事件来编写相关的事件监听器，从而对事件作出相应处理。
+
+9.2.1 Servlet监听器简介
+▲监听器的作用是监听Web容器的有效期事件，因此它是由容器管理的。
+
+9.2.2 Servlet监听器的原理
+
+9.2.3 Servlet上下文监听
+▲Servlet上下午监听可以监听ServletContext对象的创建、删除以及属性添加、删除和修改操作，
+ 该监听器需要用到如下两个接口
+1.ServletContextListener接口
+2.ServletAttributeListener接口
+
+9.2.4 HTTP会话监听
+▲HTTP会话监听信息，有4个接口可以监听
+1.HttpSessionListener接口
+2.HttpSessionActivationListener接口
+3.HttpBindingListener接口
+4.HttpSessionAttributeListener接口
+
+9.2.5 Servlet请求监听
+▲监听客户端的请求，一旦能够在监听程序中获取客户端的请求，就可以对请求进行统一处理。
+1.ServletRequestListener接口
+2.ServletRequestAttributeListener接口
+
+9.2.6 Servlet监听器统计在线人数
