@@ -1,4 +1,4 @@
 //node
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 npm install -g npm@5.3.0
