@@ -1,0 +1,17 @@
+npm init
+→ package.json
+ → "main": //指定程序的主入口文件，require('模块名') 就会加载这个文件
+
+npm install
+  --save-dev （开发时的依赖） //会加入package.json "devDependencies"
+  --save （运行时的依赖） //"dependencies"
+  -g （全局依赖安装） //需要sudo
+  
+将node_modules加入.gitignore中
+
+资源网：www.npmjs.com
+
+npm list -g //查看所有全局安装的模块
+npm list XXX //查看某个模块的版本号
+npm ls //查看包
+
