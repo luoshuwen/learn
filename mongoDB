@@ -13,4 +13,5 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 
 //在Document目录下创建mongo/db文件夹即可
-mongod --dbpath ~/Documents/mongo/db
+mkdir ~/mongo/db
+mongod --dbpath ~/mongo/db
