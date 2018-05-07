@@ -1,1 +1,15 @@
 1.拼音输入法+中文设置
+
+2.MySQL
+
+$ sudo mysql -u root
+mysql> USE mysql
+mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+
+$ mysql -u root
+mysql> SET PASSWORD FOR root@'localhost' = PASSWORD('password');
+mysql> exit;
+
+$ mysql -u root -p
