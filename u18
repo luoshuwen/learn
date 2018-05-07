@@ -13,3 +13,5 @@ mysql> SET PASSWORD FOR root@'localhost' = PASSWORD('password');
 mysql> exit;
 
 $ mysql -u root -p
+
+3.Software GNOME-Tweaks
