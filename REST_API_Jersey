@@ -1,0 +1,40 @@
+#0 What is REST API?
+#1 Creating a Jersey Project in Eclipse
+  ·配置maven自动更新：preference → maven → 3个Downloads+1个update勾上
+  ·默认路径要加上一个webapi
+#2 Running our first REST Jersey Application
+  ·Maven → jersey-quickstart-webapp
+  ·去error：右键 → properties → target runtime → Apache Tomcat v8.0√
+#3 How to create a resource class
+  ·需要一个object，因为实际上传递的是object的状态
+    → Model：Alien （应该是一个Bean，所以它有getter/setter）
+    → Controller：AlienResources（或者叫AlienController也可以）
+      Controller类需要指定访问资源的一个path：@Path（"XXX"）
+      Controller的接受请求的方法上要标注：· @GET/@POST ……
+      Controller的接受请求的方法上还要标注响应体的类型：@Produces（MediaType.……）
+        其中，如果是XML，那么要在ModelBean类上面添加标注@XmlRootElement
+#4 List as Resource
+  ·直接return List<Alien>就行
+#5 Mock Repository
+  ·需要建一个从DB取数据的类：DAO，在REST_API中，我们称为AlienRepository，因为数据的来源可能不止是DB
+  ·Repository中一般包含一些基本的操作数据的方法：CRUD，以及一些用户自定义的方法：fetchAll（）……
+  ·一般在Controller中new一个Repository以供使用，来提供数据
+#6 Creating a Resource
+  ·创建资源用@POST方法
+  ·为方法创建子@Path（"XXX"）
+#7 Postman Install
+#8 Send a Post Request By Postman
+#9 PathParam
+  ·代码如下：
+    @GET
+	  @Path("alien/{id}")//用大括号表示占位符
+	  @Produces(MediaType.APPLICATION_XML)
+	  public Alien getAlien(@PathParam("id") int id) { 
+	  	//取Path中的占位符用@PathParam
+	  	//注意import必须是import javax.ws.rs.PathParam;
+	  	System.out.println(id+"~~~~");
+  		return repo.getAlien(id);
+  	}
+#10 Working with JSON
+  ·需要在pom.xml中取消注释
+  ·@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})//用大括号括起来
