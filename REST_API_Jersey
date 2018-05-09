@@ -32,9 +32,12 @@
 	  public Alien getAlien(@PathParam("id") int id) { 
 	  	//取Path中的占位符用@PathParam
 	  	//注意import必须是import javax.ws.rs.PathParam;
+		//path中问号后面的参数是@QueryParam（"XXX"）
 	  	System.out.println(id+"~~~~");
   		return repo.getAlien(id);
   	}
 #10 Working with JSON
   ·需要在pom.xml中取消注释
   ·@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})//用大括号括起来
+#11 Mysql Repository part 1
+
