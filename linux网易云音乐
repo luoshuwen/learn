@@ -1,4 +1,6 @@
 下载
+sudo apt update
+sudo apt-get update
 sudo apt-get -f install
 sudo dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu.deb
 sudo netease-cloud-music
