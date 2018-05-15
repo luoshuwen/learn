@@ -16,3 +16,5 @@ mysql> exit;
 $ mysql -u root -p
 
 3.Software GNOME-Tweaks
+
+sudo apt-get install libcanberra-gtk-module
