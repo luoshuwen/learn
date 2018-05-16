@@ -5,9 +5,11 @@ sudo apt update
 sudo apt-get update
 sudo apt-get install ruby-full
 下载RubyGems，解压
+修改lib/rubygems/commands/setup_command.rb
+  将388行：bundler_bin_dir = File.join(Gem.default_dir, 'gems', bundler_spec.full_name, bundler_spec.bindir)
+  改为：bundler_bin_dir = bundler_spec.bin_dir
 进入目录，ruby setup.rb
 gem install jekyll
-
 
 Reference
 http://kresnik.wang/works/tech/2015/06/07/%E5%9C%A8github-pages%E7%BD%91%E7%AB%99%E4%B8%8B%E7%94%A8jekyll%E5%88%B6%E4%BD%9C%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B.html
