@@ -18,3 +18,6 @@ $ mysql -u root -p
 3.Software GNOME-Tweaks
 
 sudo apt-get install libcanberra-gtk-module
+
+#for postman
+sudo apt install libgconf2-4
