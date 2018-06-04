@@ -21,3 +21,7 @@ sudo apt-get install libcanberra-gtk-module
 
 #for postman
 sudo apt install libgconf2-4
+
+#apt-update
+Ubuntu：apt-get update出错：由于没有公钥，无法验证下列签名
+https://blog.csdn.net/qq_24805141/article/details/52838730
