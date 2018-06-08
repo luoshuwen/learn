@@ -3,6 +3,7 @@ git clone
 #ruby
 sudo apt update
 sudo apt-get update
+sudo apt-get install build-essential
 sudo apt-get install ruby-full
 下载RubyGems，解压
 修改lib/rubygems/commands/setup_command.rb
