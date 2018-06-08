@@ -5,3 +5,6 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 sudo apt update
 sudo apt-get update
 sudo apt-get install code
+
+默认打开新tab：
+"workbench.editor.enablePreview": false,
